@@ -1,25 +1,44 @@
-import { useState } from 'react'
-import './App.css'
+import { Card, Col, ConfigProvider, Grid, Layout, Row, theme } from 'antd';
+import { FunctionComponent, useEffect, useState } from 'react';
+import Goods from './components/Goods';
+import Total from './components/Total';
 
-function App() {
-  const [count, setCount] = useState(0)
+import { fetchGoods } from '../utils/fetchGoods';
+// import './App.css';
+
+const App: FunctionComponent = () => {
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [error, setError] = useState<string>('');
+
+  useEffect(() => {
+    const getGoods = async () => {
+      try {
+        const data = await fetchGoods();
+        
+      } catch (error) {
+        if (error instanceof Error) {
+          setError(error.message);
+        }
+      }
+    };
+  }, []);
 
   return (
-    <>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <ConfigProvider
+      theme={{
+        algorithm: theme.darkAlgorithm,
+      }}
+    >
+      <Row>
+        <Col flex={3}>
+          <Goods />
+        </Col>
+        <Col flex={1}>
+          <Total />
+        </Col>
+      </Row>
+    </ConfigProvider>
+  );
+};
 
-export default App
+export default App;
