@@ -37,15 +37,29 @@ const GoodCard: FunctionComponent<GoodCardProps> = ({ item, quantity }) => {
           <Image src={image} width="auto" height="100%" preview={false} />
         </div>
 
-        <Flex gap={50} justify="space-between" style={{ flex: '1' }}>
+        <Flex gap={50} justify="space-between" style={{ width: '100%' }}>
           <Flex
-            style={{ flexDirection: 'column' }}
+            style={{
+              flexDirection: 'column',
+            }}
             align="start"
             justify="space-between"
           >
             <Space direction="vertical">
               <Text strong>{title}</Text>
-              <Text type="secondary">{description}</Text>
+              <Text type="secondary">
+                <div
+                  style={{
+                    overflow: 'hidden',
+                    display: '-webkit-box',
+                    maxWidth: '700px',
+                    WebkitLineClamp: '2',
+                    WebkitBoxOrient: 'vertical',
+                  }}
+                >
+                  {description}
+                </div>
+              </Text>
             </Space>
 
             <Button
@@ -59,7 +73,7 @@ const GoodCard: FunctionComponent<GoodCardProps> = ({ item, quantity }) => {
             </Button>
           </Flex>
 
-          <Space direction="vertical" style={{ flexShrink: 0 }}>
+          <Space direction="vertical" style={{ width: '100px' }}>
             <Title style={{ textAlign: 'center' }} level={5}>
               {parseFloat((price * quantity).toFixed(2))} {'\u0024'}
             </Title>
