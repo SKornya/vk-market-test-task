@@ -31,6 +31,7 @@
 Данные для корзины можно сделать вручную (тестовые), или взять за основу отсюда:
 
 https://dummyjson.com/carts/1
+
 https://fakestoreapi.com/products
 
 Разместить в отдельном файле.
@@ -51,7 +52,7 @@ https://fakestoreapi.com/products
 
 ### Клонирование
 
-`git clone git@github.com:SKornya/vk-maket-test-task`
+`git clone git@github.com:SKornya/vk-market-test-task`
 
 ### Установка зависимостей
 
