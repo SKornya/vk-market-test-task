@@ -3,11 +3,7 @@ import { FunctionComponent } from 'react';
 import { Button, Card, Flex, Image, Space } from 'antd';
 import Text from 'antd/es/typography/Text';
 import Title from 'antd/es/typography/Title';
-import {
-  DeleteOutlined,
-  MinusCircleOutlined,
-  PlusCircleOutlined,
-} from '@ant-design/icons';
+import { DeleteOutlined, MinusOutlined, PlusOutlined } from '@ant-design/icons';
 import ButtonGroup from 'antd/es/button/button-group';
 
 import { useAppDispatch } from '../store';
@@ -64,17 +60,17 @@ const GoodCard: FunctionComponent<GoodCardProps> = ({ item, quantity }) => {
           </Flex>
 
           <Space direction="vertical" style={{ flexShrink: 0 }}>
-            <Title style={{ textAlign: 'center' }} level={4}>
+            <Title style={{ textAlign: 'center' }} level={5}>
               {parseFloat((price * quantity).toFixed(2))} {'\u0024'}
             </Title>
 
-            <ButtonGroup>
+            <ButtonGroup size="small">
               <Button
                 onClick={() => {
                   dispatch(changeGoodQuantity({ id, value: -1 }));
                 }}
               >
-                <MinusCircleOutlined />
+                <MinusOutlined style={{ fontSize: '16px' }} />
               </Button>
 
               <Button
@@ -93,7 +89,7 @@ const GoodCard: FunctionComponent<GoodCardProps> = ({ item, quantity }) => {
                   dispatch(changeGoodQuantity({ id, value: 1 }));
                 }}
               >
-                <PlusCircleOutlined />
+                <PlusOutlined style={{ fontSize: '16px' }} />
               </Button>
             </ButtonGroup>
           </Space>
